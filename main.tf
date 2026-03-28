@@ -41,6 +41,7 @@ resource "aws_instance" "myinstance" {
 
   ami           = var.myami
   instance_type = var.myinstance
+  instance_count = var.instance_count
     lifecycle {
     create_before_destroy = true
   }
