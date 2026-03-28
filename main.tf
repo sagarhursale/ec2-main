@@ -33,6 +33,11 @@ resource "random_string" "mtstring" {
 }
 
 resource "aws_instance" "myinstance" {
+
+  variable "instance_count" {
+  default = 3
+}
+
   ami           = var.myami
   instance_type = var.myinstance
     lifecycle {
