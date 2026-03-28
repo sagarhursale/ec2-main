@@ -32,11 +32,12 @@ resource "random_string" "mtstring" {
 
 }
 
-resource "aws_instance" "myinstance" {
 
   variable "instance_count" {
   default = 3
 }
+
+resource "aws_instance" "myinstance" {
 
   ami           = var.myami
   instance_type = var.myinstance
@@ -53,6 +54,6 @@ resource "aws_instance" "myinstance" {
               systemctl enable nginx
               EOF
   tags = {
-    Name = "tom-${random_string.mtstring.result}"
+    Name = "tom-${random_string.mtstring.result}-${count.index + 1}"
   }
 }
