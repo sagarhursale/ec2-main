@@ -6,8 +6,12 @@ variable "myami" {
 variable "myinstance" {
   description = "provide type of your instance"
   default = "t3.micro"
+}
 
-
+variable "worker_count" {
+  description = "Number of worker nodes"
+  type        = number
+  default     = 2
 }
 
 variable "myregion" {
