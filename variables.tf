@@ -10,7 +10,6 @@ variable "myinstance" {
 
 variable "worker_count" {
   description = "Number of worker nodes"
-  type        = number
   default     = 2
 }
 
