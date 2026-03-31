@@ -33,6 +33,7 @@ resource "random_string" "mtstring" {
 }
 
 resource "aws_instance" "myinstance" {
+  count         = var.worker_count
   ami           = var.myami
   instance_type = var.myinstance
     lifecycle {
