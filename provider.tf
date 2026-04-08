@@ -10,3 +10,8 @@ terraform {
     }
   }
 }
+
+# 🔥 ADD THIS (VERY IMPORTANT)
+provider "aws" {
+  region = "ap-south-1"
+}
