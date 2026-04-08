@@ -20,11 +20,11 @@ jobs:
         shell: bash
 
     steps:
-      # 🔹 1. Checkout Code
+      # 🔹 Checkout Code
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      # 🔹 2. Configure AWS Credentials (IMPORTANT FIX)
+      # 🔹 Configure AWS Credentials (FIX for your error)
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
@@ -32,33 +32,28 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ap-south-1
 
-      # 🔹 3. Setup Terraform
+      # 🔹 Setup Terraform
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
 
-      # 🔹 4. Check Terraform Version
+      # 🔹 Terraform Version
       - name: Terraform Version
         run: terraform version
 
-      # 🔹 5. Initialize Terraform
+      # 🔹 Terraform Init
       - name: Terraform Init
         run: terraform init
 
-      # 🔹 6. Validate Terraform
+      # 🔹 Terraform Validate
       - name: Terraform Validate
         run: terraform validate
 
-      # 🔹 7. Plan (only for PR)
+      # 🔹 Terraform Plan (PR only)
       - name: Terraform Plan
         if: github.event_name == 'pull_request'
         run: terraform plan -input=false
 
-      # 🔹 8. Apply (on push to main)
-      - name: Terraform Apply
+      # ⚠️ Terraform Destroy (use carefully)
+      - name: Terraform Destroy
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        run: terraform apply -auto-approve -input=false
-
-      # ❌ (Optional) Destroy — use carefully
-      # - name: Terraform Destroy
-      #   if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-      #   run: terraform destroy -auto-approve -input=false
+        run: terraform destroy -auto-approve -input=false
