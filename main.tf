@@ -1,6 +1,6 @@
 terraform {
   backend "s3" {
-    bucket = "devops-qoiaakvs"
+    bucket = "amzones"
     key    = "ec2/terraform.tfstate"
     region = "ap-south-1"
   }
@@ -41,9 +41,9 @@ resource "aws_instance" "myinstance" {
   security_groups = [aws_security_group.mysg.name]
   user_data     = <<-EOF
               #!/bin/bash
-              apt update -y
-              apt install nginx -y
-              echo "<html><body><h1>Welcome to Terraform</h1></body></html>" > /var/www/html/index.html
+              yum update -y
+              yum install nginx -y
+              echo "<html><body><h1>Welcome to Devops</h1></body></html>" > /var/www/html/index.html
               systemctl start nginx
               systemctl enable nginx
               EOF
