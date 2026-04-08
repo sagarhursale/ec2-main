@@ -11,7 +11,3 @@ terraform {
   }
 }
 
-# 🔥 Very Important: AWS Provider
-provider "aws" {
-  region = "ap-south-1"
-}
