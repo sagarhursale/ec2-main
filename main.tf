@@ -1,12 +1,3 @@
-terraform {
-  backend "s3" {
-    bucket = "devops-qoiaakvs"
-    key    = "ec2/terraform.tfstate"
-    region = "ap-south-1"
-  }
-}
-
-
 resource "aws_security_group" "mysg" {
 name = "tom-sg"
 
