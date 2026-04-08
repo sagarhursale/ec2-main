@@ -1,4 +1,3 @@
-
 resource "aws_security_group" "mysg" {
 name = "tom-sg"
 
