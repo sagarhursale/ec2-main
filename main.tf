@@ -37,6 +37,6 @@ resource "aws_instance" "myinstance" {
               systemctl enable nginx
               EOF
   tags = {
-    Name = "tossddssm-${random_string.mtstring.result}"
+    Name = "tossddssssm-${random_string.mtstring.result}"
   }
 }
